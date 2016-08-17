@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         final List<RATesting> testings = new LinkedList<RATesting>();
 
-        testings.add(new RATesting("ListView数据更新", "com.example.jyhu.runoobandroid.Activities.DataReloadListViewActivity", "测试ListView的数据更新"));
+        testings.add(new RATesting("ListView数据更新", "com.example.jyhu.runoobandroid.Activities.DataUpdate.DataUpdateListViewActivity", "测试ListView的数据更新"));
         testings.add(new RATesting("反射", "com.example.jyhu.runoobandroid.Activities.Reflection.ReflectionTestActivity", "测试Android中的反射机制"));
 
 
