@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.jyhu.runoobandroid.R;
 
@@ -55,6 +56,8 @@ public class MyBaseAdapter extends BaseAdapter {
             viewHolder.mTextView = (TextView) view.findViewById(R.id.list_item_data_update_item_content);
 
             view.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder)view.getTag();
         }
 
         viewHolder.mImageView.setImageResource(mTestDatas.get(i).getImageId());
@@ -70,10 +73,58 @@ public class MyBaseAdapter extends BaseAdapter {
 
     public void add(TestData testData) {
         if (mTestDatas == null) {
-            mTestDatas = new LinkedList<>();
+            mTestDatas = new LinkedList<TestData>();
         }
+        System.out.println(testData.getContent() + "       " + testData.getImageId());
         mTestDatas.add(testData);
         notifyDataSetChanged();
     }
 
+    public void insert(int position, TestData testData) {
+        if (mTestDatas == null) {
+            mTestDatas = new LinkedList<>();
+            showLog();
+            return;
+        }
+
+        if (mTestDatas.size() - 1 <= position) {
+            showLog();
+            return;
+        }
+        mTestDatas.add(position, testData);
+        notifyDataSetChanged();
+    }
+
+    public void remove(TestData testData) {
+        if (mTestDatas != null) {
+            mTestDatas.remove(testData);
+            notifyDataSetChanged();
+        }
+    }
+
+    public void remove(int position) {
+        if (mTestDatas != null && position <= mTestDatas.size() - 1) {
+            mTestDatas.remove(position);
+            notifyDataSetChanged();
+            return;
+        }
+        showLog();
+    }
+
+    public void clear() {
+        if (mTestDatas != null) {
+            mTestDatas.clear();
+            notifyDataSetChanged();
+        }
+    }
+
+
+
+    private void showLog(String log) {
+        Toast.makeText(mContext, log, Toast.LENGTH_SHORT).show();
+    }
+
+    private void showLog() {
+        showLog("操作的索引越界");
+    }
 }

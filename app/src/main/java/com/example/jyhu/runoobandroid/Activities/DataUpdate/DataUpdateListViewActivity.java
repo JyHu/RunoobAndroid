@@ -25,6 +25,7 @@ public class DataUpdateListViewActivity extends AppCompatActivity implements Vie
     private Context mContext = null;
     private TextView mTipTextView =null;
     private int flag = 0;
+    private TestData testRemoveData = null;
 
 
     @Override
@@ -42,21 +43,53 @@ public class DataUpdateListViewActivity extends AppCompatActivity implements Vie
 
         Button insetOneDataButton = (Button)findViewById(R.id.data_update_list_view_add_1_data_button);
         insetOneDataButton.setOnClickListener(this);
+
+        Button insertPositionButton = (Button)findViewById(R.id.data_update_list_view_insert_data_button);
+        insertPositionButton.setOnClickListener(this);
+
+        Button removeDataButton = (Button)findViewById(R.id.data_update_list_view_delete_by_data);
+        removeDataButton.setOnClickListener(this);
+
+        Button removeByIndexButton = (Button)findViewById(R.id.data_update_list_view_delete_by_index);
+        removeByIndexButton.setOnClickListener(this);
+
+        Button removeAllButton = (Button)findViewById(R.id.data_update_list_view_remove_all_data);
+        removeAllButton.setOnClickListener(this);
+
+        Button updateItemButton = (Button)findViewById(R.id.data_update_list_view_update_one_item);
+        updateItemButton.setOnClickListener(this);
     }
 
     private void bindViews() {
         mListView = (ListView)findViewById(R.id.data_update_list_view);
-        mTipTextView = (TextView)findViewById(R.id.data_update_list_view_empty_tip_view);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.data_update_list_view_add_1_data_button:
-            {
-                mMyBaseAdapter.add(new TestData(R.mipmap.sns_icon_1, "hello 你好" + flag));
+                mMyBaseAdapter.add(new TestData(R.mipmap.sns_icon_10, "hello 你好" + flag));
                 flag ++;
-            }
+                break;
+
+            case R.id.data_update_list_view_insert_data_button:
+                testRemoveData = new TestData(R.mipmap.sns_icon_1, "insert at 5");
+                mMyBaseAdapter.insert(4, testRemoveData);
+                break;
+
+            case R.id.data_update_list_view_delete_by_data:
+                mMyBaseAdapter.remove(testRemoveData);
+                break;
+
+            case R.id.data_update_list_view_delete_by_index:
+                mMyBaseAdapter.remove(5);
+                break;
+
+            case R.id.data_update_list_view_remove_all_data:
+                mMyBaseAdapter.clear();
+                break;
+
+            case R.id.data_update_list_view_update_one_item:
                 break;
         }
     }

@@ -18,6 +18,8 @@
         <activity android:name=".Activities.Reflection.ReflectionTestActivity"/>
         <activity android:name=".Activities.DataUpdate.DataUpdateListViewActivity">
         </activity>
+        <activity android:name=".Activities.ReusefulAdapter.ReusefulAdapterActivity">
+        </activity>
     </application>
 
 </manifest>
