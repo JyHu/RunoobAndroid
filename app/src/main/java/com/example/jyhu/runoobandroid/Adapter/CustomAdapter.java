@@ -20,31 +20,59 @@ public abstract class CustomAdapter<T> extends BaseAdapter {
     private ArrayList<T> mDatas;
     private int mLayoutRes; // 布局id
 
+    /**
+     * 无参构造方法
+     */
     public CustomAdapter() {
     }
 
+    /**
+     * 有参构造方法
+     * @param datas         数据源
+     * @param layoutRes     item布局样式
+     */
     public CustomAdapter(ArrayList<T> datas, int layoutRes) {
         mDatas = datas;
         mLayoutRes = layoutRes;
     }
 
+    /**
+     * listview中item的个数
+     * @return  item个数
+     */
     @Override
     public int getCount() {
         return mDatas != null ? mDatas.size() : 0;
     }
 
+    /**
+     * 返回索引i位置的数据
+     * @param i 索引
+     * @return  返回类型是一个泛型，说明这里可以返回任何数据，在调用这个方法的时候需要进行强转
+     */
     @Override
     public T getItem(int i) {
         return mDatas.get(i);
     }
+
 
     @Override
     public long getItemId(int i) {
         return i;
     }
 
+    /**
+     * 获取每个item
+     * @param i         item索引
+     * @param view      item所在的视图
+     * @param viewGroup 父视图
+     * @return  item
+     */
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
+        /**
+         * 将当前item跟holder关联起来
+         */
         ViewHolder holder = ViewHolder.bind(viewGroup.getContext(), view, viewGroup, mLayoutRes, i);
         bindView(holder, getItem(i));
 
@@ -53,7 +81,10 @@ public abstract class CustomAdapter<T> extends BaseAdapter {
 
     public abstract void bindView(ViewHolder holder, T obj);
 
-    // 添加一个元素
+    /**
+     * 添加一个元素并刷新ListView
+     * @param data
+     */
     public void add(T data) {
         if (mDatas == null) {
             mDatas = new ArrayList<>();
@@ -62,7 +93,11 @@ public abstract class CustomAdapter<T> extends BaseAdapter {
         notifyDataSetChanged();
     }
 
-    // 在指定位置添加一个元素
+    /**
+     * 在指定位置添加一个元素
+     * @param position
+     * @param data
+     */
     public void add(int position, T data) {
         if (mDatas == null) {
             mDatas = new ArrayList<>();
@@ -75,7 +110,10 @@ public abstract class CustomAdapter<T> extends BaseAdapter {
         mDatas.add(position, data);
     }
 
-    // 移除一个元素
+    /**
+     * 移除一个元素
+     * @param data
+     */
     public void remove(T data) {
         if (mDatas != null) {
             mDatas.remove(data);
@@ -83,7 +121,10 @@ public abstract class CustomAdapter<T> extends BaseAdapter {
         }
     }
 
-    // 移除指定位置的元素
+    /**
+     * 移除指定位置的元素
+     * @param position
+     */
     public void remove(int position) {
         if (mDatas != null && mDatas.size() - 1 >= position) {
             mDatas.remove(position);
@@ -91,7 +132,9 @@ public abstract class CustomAdapter<T> extends BaseAdapter {
         }
     }
 
-    // 清空所有数据
+    /**
+     * 清空所有数据
+     */
     public void clear() {
         if (mDatas != null) {
             mDatas.clear();
@@ -105,7 +148,12 @@ public abstract class CustomAdapter<T> extends BaseAdapter {
         private int position;                   // 索引
         private Context context;                // 上下文
 
-        // 构造方法，完成相关初始化
+        /**
+         * 构造方法，完成相关初始化
+         * @param context       上下文
+         * @param parent        父视图
+         * @param layoutRes     item布局样式
+         */
         private ViewHolder(Context context, ViewGroup parent, int layoutRes) {
             mViews = new SparseArray<>();
             this.context = context;
@@ -114,7 +162,15 @@ public abstract class CustomAdapter<T> extends BaseAdapter {
             item = convertView;
         }
 
-        // 绑定ViewHolder与item
+        /**
+         * 绑定ViewHolder与item
+         * @param context       上下文
+         * @param convertView   item的视图
+         * @param parent        父视图
+         * @param layoutRes     布局样式
+         * @param position      当前item的索引
+         * @return
+         */
         public static ViewHolder bind(Context context, View convertView, ViewGroup parent, int layoutRes, int position) {
             ViewHolder holder;
             if (convertView == null) {
@@ -168,7 +224,7 @@ public abstract class CustomAdapter<T> extends BaseAdapter {
         /**
          * 设置图片内容
          */
-        public ViewHolder setImageResoutce(int id, int drawableRes) {
+        public ViewHolder setImageResource(int id, int drawableRes) {
             View view = getView(id);
             if (view instanceof ImageView) {
                 ((ImageView)view).setImageResource(drawableRes);
