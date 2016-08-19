@@ -24,6 +24,8 @@
         </activity>
         <activity android:name=".Activities.MutiLayoutListViewActivity">
         </activity>
+        <activity android:name=".Activities.GridViewTestActivity">
+        </activity>
     </application>
 
 </manifest>
