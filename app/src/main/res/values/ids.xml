@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="muti_adapter_item_tag_app" type="id"/>
+    <item name="muti_adapter_item_tag_book" type="id"/>
+
+</resources>

@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         testings.add(new RATesting("反射", "com.example.jyhu.runoobandroid.Activities.Reflection.ReflectionTestActivity", "测试Android中的反射机制"));
         testings.add(new RATesting("可复用的Adapter", "com.example.jyhu.runoobandroid.Activities.ReusefulAdapter.ReusefulAdapterActivity", "构建一个可复用的基础Adapter"));
         testings.add(new RATesting("测试可复用的Adapter", "com.example.jyhu.runoobandroid.Activities.TestCustomAdapter.TestCustomAdapterActivity", "测试使用自定义的可复用的Adapter"));
+        testings.add(new RATesting("测试多种item的ListView", "com.example.jyhu.runoobandroid.Activities.MutiLayoutListViewActivity", "测试多种item的liestview"));
 
         mainFunctionList(testings);
     }

@@ -22,6 +22,8 @@
         </activity>
         <activity android:name=".Activities.TestCustomAdapter.TestCustomAdapterActivity">
         </activity>
+        <activity android:name=".Activities.MutiLayoutListViewActivity">
+        </activity>
     </application>
 
 </manifest>
