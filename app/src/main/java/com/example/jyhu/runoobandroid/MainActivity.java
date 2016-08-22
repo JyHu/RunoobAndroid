@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         testings.add(new RATesting("测试多种item的ListView", "com.example.jyhu.runoobandroid.Activities.MutiLayoutListViewActivity", "测试多种item的liestview"));
         testings.add(new RATesting("测试GridView", "com.example.jyhu.runoobandroid.Activities.GridViewTestActivity", "使用之前创建的BaseAdapter来测试GridView"));
         testings.add(new RATesting("Spinner test", "com.example.jyhu.runoobandroid.Activities.SpinnerTestActivity", "测试两种Spinner"));
-
+        testings.add(new RATesting("AutoCompleteTextView", "com.example.jyhu.runoobandroid.Activities.AutoCompleteTextViewTestActivity", "测试自动完成文本框"));
 
         mainFunctionList(testings);
     }
