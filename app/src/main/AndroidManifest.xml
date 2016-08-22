@@ -26,6 +26,8 @@
         </activity>
         <activity android:name=".Activities.GridViewTestActivity">
         </activity>
+        <activity android:name=".Activities.SpinnerTestActivity">
+        </activity>
     </application>
 
 </manifest>

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Runoob.Android</string>
+    <string name="spinner_lol_promot">spinner title</string>
 </resources>
